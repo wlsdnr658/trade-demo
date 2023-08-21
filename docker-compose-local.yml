@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  trade-demo-db:
+    container_name: trade-demo-db
+    build:
+      dockerfile: Dockerfile
+      context: ./db
+    image: wlsdnr568/trade-demo-db
+    environment:
+      - MYSQL_DATABASE=trade-demo
+      - MYSQL_USER=${SPRING_DATASOURCE_USERNAME}
+      - MYSQL_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+    volumes:
+      - ./db/conf.d:/etc/mysql/conf.d
+      - ./db/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']

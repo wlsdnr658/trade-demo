@@ -1,0 +1,49 @@
+spring:
+  profiles:
+    active: local # default\
+    group:
+      local:
+        - common
+      prod:
+        - common
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: common
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/trade-demo
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASORUCE_PASSWORD}
+    hikari:
+      maximum-pool-size: 20
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+debug: false
+logging:
+  level:
+    com.moon.tradedemo: debug
+    org.springframework.web.servlet: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace\
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+---

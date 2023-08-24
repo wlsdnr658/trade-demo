@@ -33,6 +33,7 @@ spring:
     show-sql: true
 
 debug: false
+
 logging:
   level:
     com.moon.tradedemo: debug

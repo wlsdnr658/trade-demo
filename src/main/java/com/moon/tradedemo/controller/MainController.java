@@ -6,12 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Controller
-@RequestMapping("/")
 public class MainController {
 
-    @GetMapping("")
+    @GetMapping("/")
     public String index() {
-        return "index";
+        return "forward:posts";
     }
 
 }

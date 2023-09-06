@@ -10,7 +10,7 @@ public class MainController {
 
     @GetMapping("/")
     public String index() {
-        return "forward:posts";
+        return "posts/index";
     }
 
 }

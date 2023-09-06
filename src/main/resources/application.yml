@@ -31,6 +31,9 @@ spring:
     hibernate:
       ddl-auto: create
     show-sql: true
+  devtools:
+    livereload:
+      enabled: true
 
 debug: false
 
